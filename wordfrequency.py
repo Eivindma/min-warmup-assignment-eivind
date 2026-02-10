@@ -19,7 +19,7 @@ def read_file(file_name):
     # Tips: kanksje "open"-funksjonen kunne være nyttig her: https://docs.python.org/3/library/functions.html#open
     with open(file_name, "r") as f:
         lines = f.read().splitlines()
-    return lines  # TODO: Du må erstatte denne linjen
+    return lines
 
 
 def lines_to_words(lines):
@@ -37,7 +37,13 @@ def lines_to_words(lines):
     # Tips: se på "split()"-funksjonen https://docs.python.org/3/library/stdtypes.html#str.split
     # i tillegg kan "strip()": https://docs.python.org/3/library/stdtypes.html#str.strip
     # og "lower()": https://docs.python.org/3/library/stdtypes.html#str.lower være nyttig
-    return NotImplemented  # TODO: Du må erstatte denne linjen
+    for word in lines:
+        word_list = []
+        word = word.split().lower()
+        
+        word_list.append(word)
+
+    return word_list  # TODO: Du må erstatte denne linjen
 
 
 def compute_frequency(words):
