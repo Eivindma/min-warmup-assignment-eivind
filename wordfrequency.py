@@ -17,7 +17,7 @@ def read_file(file_name):
     tilbake en liste av tekststrenger som representerer linjene i filen.
     """
     # Tips: kanksje "open"-funksjonen kunne være nyttig her: https://docs.python.org/3/library/functions.html#open
-    with open(file_name,'r') as f:
+    with open(file_name,'r', encoding='utf-8') as f:
         lines = f.read().splitlines()
         # lines = f.readlines()
     return lines  # TODO: Du må erstatte denne linjen
@@ -39,12 +39,14 @@ def lines_to_words(lines):
     # i tillegg kan "strip()": https://docs.python.org/3/library/stdtypes.html#str.strip
     # og "lower()": https://docs.python.org/3/library/stdtypes.html#str.lower være nyttig
     word_list = []
+    word_lowered_list = []
     for line in lines:
+        line_lowered = line.lower()
+        line_lowered_stripped = line_lowered.strip(";, ")
+        words = line_lowered_stripped.split()
         
-        words = line.split()
-        for word in words:
-            word = word.lower().strip()
-            word_list.append(word)
+        
+        word_list.extend(words)
         
 
     return word_list  # TODO: Du må erstatte denne linjen
