@@ -38,18 +38,28 @@ def lines_to_words(lines):
     # Tips: se på "split()"-funksjonen https://docs.python.org/3/library/stdtypes.html#str.split
     # i tillegg kan "strip()": https://docs.python.org/3/library/stdtypes.html#str.strip
     # og "lower()": https://docs.python.org/3/library/stdtypes.html#str.lower være nyttig
-    word_list = []
+    '''word_list = []
     word_lowered_list = []
     for line in lines:
-        line_lowered = line.lower()
-        line_lowered_stripped = line_lowered.strip(";, ")
-        words = line_lowered_stripped.split()
+        if ".,:;!?\"'" in line:
+            pass
+        else:
+            line_lowered = line.lower()
+            line_lowered_stripped = line_lowered.strip(";")
+            words = line_lowered_stripped.split()
         
         
-        word_list.extend(words)
-        
-
-    return word_list  # TODO: Du må erstatte denne linjen
+        word_list.extend(words)'''
+    tegn_a_fjerne = ".,:;!?\"'"
+    
+    words = []
+    for line in lines:
+        cleaned = line.lower()
+        for t in tegn_a_fjerne:
+            cleaned = cleaned.replace(t, " ")
+        words.extend(cleaned.split())
+    
+    return words
 
 
 def compute_frequency(words):
